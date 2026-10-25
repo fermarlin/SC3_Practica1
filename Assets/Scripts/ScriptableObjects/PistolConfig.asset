@@ -17,3 +17,6 @@ MonoBehaviour:
   fireRate: 0.5
   bullets: 20
   reloadTime: 1.5
+  pelletCount: 1
+  spreadAngle: 0
+  weaponPrefab: {fileID: 3376999452230614661, guid: 411a96b4b4a97bc4da94d588337d9178, type: 3}

@@ -19,3 +19,4 @@ MonoBehaviour:
   reloadTime: 1.5
   pelletCount: 1
   spreadAngle: 0
+  weaponPrefab: {fileID: 1510046483291772086, guid: afbc5c5c956a853418c62ba26cbbc6bf, type: 3}

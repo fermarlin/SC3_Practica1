@@ -7,6 +7,7 @@ public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private LayerMask shootMask;
     [SerializeField] private List<WeaponConfigSO> weapons;
+    [SerializeField] private Transform weaponHolder;
 
     private WeaponConfigSO currentWeapon;
     private PlayerInputs playerInputs;
@@ -14,6 +15,8 @@ public class PlayerShooting : MonoBehaviour
     private Dictionary<WeaponConfigSO, int> weaponAmmo = new Dictionary<WeaponConfigSO, int>();
     private bool isReloading;
     private Transform cameraTransform;
+    private GameObject currentWeaponModel;
+
     void Awake()
     {
         foreach (WeaponConfigSO weapon in weapons){
@@ -25,7 +28,7 @@ public class PlayerShooting : MonoBehaviour
 
         if (weapons.Count > 0 && weapons[0] != null)
         {
-            currentWeapon = weapons[0];
+            EquipWeaponByIndex(0);
         }
 
         if(Camera.main!=null){
@@ -76,8 +79,12 @@ public class PlayerShooting : MonoBehaviour
     }
 
     void Shoot(InputAction.CallbackContext context){
-        if(nextFireTime>Time.time|| weaponAmmo[currentWeapon]<=0||isReloading||currentWeapon == null||cameraTransform == null) return;
-        
+        if (currentWeapon == null || cameraTransform == null)
+            return;
+
+        if (nextFireTime > Time.time || weaponAmmo[currentWeapon] <= 0 || isReloading)
+            return;
+
         nextFireTime = currentWeapon.FireRate+Time.time;
         float halfSpread = currentWeapon.SpreadAngle / 2f;
 
@@ -130,7 +137,23 @@ public class PlayerShooting : MonoBehaviour
             return;
         }
 
+        
         currentWeapon = newWeapon; 
+        UpdateWeaponModel();
+    }
+
+    void UpdateWeaponModel()
+    {
+        if (currentWeaponModel != null)
+        {
+            Destroy(currentWeaponModel);
+            currentWeaponModel = null;
+        }
+        
+        if (weaponHolder == null || currentWeapon.WeaponPrefab == null)
+        return;
+
+        currentWeaponModel = Instantiate(currentWeapon.WeaponPrefab, weaponHolder);
 
     }
         

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
   rotationSpeed: 1000
-  moveSpeed: 2
+  moveSpeed: 5
   jumpForce: 7
   groundCheckRadius: 0.7
   groundLayer:
