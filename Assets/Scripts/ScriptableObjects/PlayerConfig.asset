@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
   rotationSpeed: 1000
-  moveSpeed: 5
-  jumpForce: 7
+  moveSpeed: 7
+  jumpForce: 5
   groundCheckRadius: 0.7
   groundLayer:
     serializedVersion: 2
