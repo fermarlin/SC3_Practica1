@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
 
     public float MoveSpeed => config.MoveSpeed;
-
+    public bool IsAiming => isAiming;
     void Awake()
     {
         playerInputs = new PlayerInputs();

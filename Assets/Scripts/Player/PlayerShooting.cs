@@ -85,6 +85,7 @@ public class PlayerShooting : MonoBehaviour
         if (nextFireTime > Time.time || weaponAmmo[currentWeapon] <= 0 || isReloading)
             return;
 
+        currentWeaponModel.GetComponent<WeaponView>().PlayShootEffect();
         nextFireTime = currentWeapon.FireRate+Time.time;
         float halfSpread = currentWeapon.SpreadAngle / 2f;
 

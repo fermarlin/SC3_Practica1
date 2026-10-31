@@ -9,7 +9,11 @@ public class PlayerAnimator : MonoBehaviour
     float speed;
 
 
-    // Update is called once per frame
+    void Awake()
+    {
+        playerRb = GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
         Vector3 horizontalVelocity = new Vector3(
@@ -24,5 +28,6 @@ public class PlayerAnimator : MonoBehaviour
             horizontalVelocity.magnitude
         );
         animator.SetFloat("Speed", speed, 0.1f, Time.deltaTime);
+        animator.SetBool("IsAiming", playerController.IsAiming);
     }
 }
