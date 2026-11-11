@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: ComputerScreen
+    second: {fileID: 2100000, guid: 3aa93e25f8152274aba83dd1faab11e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Store
     second: {fileID: 2100000, guid: a7b7e9cac6948dc44805299ea950e622, type: 2}
   materials:
