@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
 
     public float MoveSpeed => config.MoveSpeed;
     public bool IsAiming => isAiming;
+
+    public event System.Action<bool> OnAimChanged;
+
     void Awake()
     {
         playerInputs = new PlayerInputs();
@@ -94,7 +97,8 @@ public class PlayerController : MonoBehaviour
         if(context.performed){
             isAiming = true;
         }else isAiming = false;
-                    
+        
+        OnAimChanged?.Invoke(isAiming);        
     }
 
     void Jump(InputAction.CallbackContext context){

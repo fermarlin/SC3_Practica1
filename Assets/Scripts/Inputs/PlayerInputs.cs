@@ -163,6 +163,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Repair"",
+                    ""type"": ""Button"",
+                    ""id"": ""4a00f66a-5153-4636-acd0-be52927b5a85"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -341,6 +350,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""EquipShotgun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d51e9e3e-59fa-4b2a-92f6-664ae2be847d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Repair"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -379,6 +399,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_PlayerActionMap_Recharge = m_PlayerActionMap.FindAction("Recharge", throwIfNotFound: true);
         m_PlayerActionMap_EquipPistol = m_PlayerActionMap.FindAction("EquipPistol", throwIfNotFound: true);
         m_PlayerActionMap_EquipShotgun = m_PlayerActionMap.FindAction("EquipShotgun", throwIfNotFound: true);
+        m_PlayerActionMap_Repair = m_PlayerActionMap.FindAction("Repair", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
@@ -467,6 +488,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActionMap_Recharge;
     private readonly InputAction m_PlayerActionMap_EquipPistol;
     private readonly InputAction m_PlayerActionMap_EquipShotgun;
+    private readonly InputAction m_PlayerActionMap_Repair;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerActionMap".
     /// </summary>
@@ -510,6 +532,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerActionMap/EquipShotgun".
         /// </summary>
         public InputAction @EquipShotgun => m_Wrapper.m_PlayerActionMap_EquipShotgun;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerActionMap/Repair".
+        /// </summary>
+        public InputAction @Repair => m_Wrapper.m_PlayerActionMap_Repair;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -560,6 +586,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @EquipShotgun.started += instance.OnEquipShotgun;
             @EquipShotgun.performed += instance.OnEquipShotgun;
             @EquipShotgun.canceled += instance.OnEquipShotgun;
+            @Repair.started += instance.OnRepair;
+            @Repair.performed += instance.OnRepair;
+            @Repair.canceled += instance.OnRepair;
         }
 
         /// <summary>
@@ -595,6 +624,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @EquipShotgun.started -= instance.OnEquipShotgun;
             @EquipShotgun.performed -= instance.OnEquipShotgun;
             @EquipShotgun.canceled -= instance.OnEquipShotgun;
+            @Repair.started -= instance.OnRepair;
+            @Repair.performed -= instance.OnRepair;
+            @Repair.canceled -= instance.OnRepair;
         }
 
         /// <summary>
@@ -704,5 +736,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnEquipShotgun(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Repair" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRepair(InputAction.CallbackContext context);
     }
 }
