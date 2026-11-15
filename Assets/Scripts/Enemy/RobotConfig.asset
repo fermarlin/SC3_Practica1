@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb84262359d32340a0997a18c93f349, type: 3}
   m_Name: RobotConfig
   m_EditorClassIdentifier: 
-  MaxHealth: 40
+  MaxHealth: 30
   AttackDamage: 10
   DetectionRange: 10
-  AttackRange: 2
+  AttackRange: 2.2
   MoveSpeed: 3.5
   AttackCooldown: 1.5
-  HitRadius: 0.5
+  HitRadius: 0.7
   HitStunDuration: 0.6
   AttackTurnSpeed: 180
