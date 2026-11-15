@@ -34,3 +34,6 @@ MonoBehaviour:
   - name: Reload
     clip: {fileID: 8300000, guid: b3c84a468b823f84dbc3a9935a1f9b52, type: 3}
     volume: 1
+  - name: ShotgunShot
+    clip: {fileID: 8300000, guid: 59954243f4e4b6949bf0886293300bb1, type: 3}
+    volume: 1
